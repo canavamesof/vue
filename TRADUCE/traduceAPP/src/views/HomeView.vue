@@ -31,6 +31,9 @@
 
 <script setup>
 import loginUsuario from '@/components/loginUsuario.vue';
+let buttonsConfig = [{
+  texto : 'Iniciar Sesión'
+}]
 
 </script>
 

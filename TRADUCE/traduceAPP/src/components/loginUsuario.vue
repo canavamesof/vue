@@ -5,25 +5,31 @@
     <p class="card-text" v-if="parrafo">{{parrafo}}</p>
     <!-- enviar de html a vue /slot/ -->
     <slot></slot>
-    <a href="#" class="btn btn-info">Registrese acá</a>
+    <div class="d-grid">
+      <button v-for="button in buttonsConfig"> {{ button.texto }}</button>
+    </div>
 
   </div>
 </div>
 
 </template>
 
-<!-- //esto son los props  -->
+<!-- //esto son los props  (pasar parametros del padre al hijo)-->
 
 <script setup>
 defineProps({
     titulo: {
         type: String,
-        required: false
+        required: false,
     },
     parrafo:{
         type: String,
-        required: false
-    }
+        required: false,
+    },
+    buttonsConfig: {
+      type: Object,
+      required: true
+    },
 });
 
 </script>
