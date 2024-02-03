@@ -1,7 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import navMenuComponent from './components/navMenuComponent.vue'
-// import axios from 'axios';
+</script>
+
+<!-- // import axios from 'axios';
  
 // const encodedParams = new URLSearchParams();
 // encodedParams.set('q', 'Hello, world!');
@@ -24,14 +26,12 @@ import navMenuComponent from './components/navMenuComponent.vue'
 // 	const response = await axios.request(options);
 // 	console.log(response.data);
 // } catch (error) {
-// 	console.error(error);}
+// 	console.error(error);} -->
 
-</script>
+
 
 <template>
-
   <navMenuComponent/>
   <RouterView />
-
 </template>
 
