@@ -38,7 +38,7 @@ const putDataPost = async () => {
 };
 
 export default {
-    //getDataPost,
-  //  postDataPost,
-    //putDataPost
+    getDataPost,
+    postDataPost,
+    putDataPost
 }
