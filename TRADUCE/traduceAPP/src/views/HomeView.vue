@@ -4,11 +4,11 @@
       <div class="col-lg-6">
         <div class="img-container">
           <div class="d-flex">
-            <img src="../assets/logo app.png" alt="Logo traduceAPP" height="350px" />
+            <img src="../assets/logo app.png" alt="Logo Vue" height="350px" />
           </div>
           <div>
             <h2>
-              El mejor traductor
+              La mejor web de traducción
             </h2>
           </div>
         </div>
@@ -48,45 +48,45 @@
 <script setup>
 import loginUsuario from "@/components/loginUsuario.vue";
 import { onMounted } from "vue";
-// import postServices from "../services/postServices";
+import postServices from "../services/postServices";
 
-// const imprimirConsola = () => {
-//   console.log("Hola mundo");
-// };
+const imprimirConsola = () => {
+  console.log("Hola mundo");
+};
 
-// const getDataPost = async () => {
-//   const response = await postServices.getDataPost();
+const getDataPost = async () => {
+  const response = await postServices.getDataPost();
 
-//   console.log("Se llamo al api");
-//   console.log(response);
-//   console.log(response.data);
-// };
+  console.log("Se llamo al api");
+  console.log(response);
+  console.log(response.data);
+};
 
-// const postDataPost = async () => {
-//   // let newpost = {
-//   //   id: "3",
-//   //   title: "He creado este registro utilizando axios, desde una vista de Vusjs",
-//   // };
-//   const response = await postServices.getDataPost();
+const postDataPost = async () => {
+  // let newpost = {
+  //   id: "3",
+  //   title: "He creado este registro utilizando axios, desde una vista de Vusjs",
+  // };
+  const response = await postServices.getDataPost();
 
-//   console.log(response);
-// };
+  console.log(response);
+};
 
-// const putDataPost = async () => {
-//   // let updatepost = {
-//   //   id: "3",
-//   //   title:
-//   //     "He actualizado este registro utilizando axios, desde una vista de Vuejs",
-//   // };
+const putDataPost = async () => {
+  // let updatepost = {
+  //   id: "3",
+  //   title:
+  //     "He actualizado este registro utilizando axios, desde una vista de Vuejs",
+  // };
 
-//   const response = await postServices.putDataPost();
+  const response = await postServices.putDataPost();
 
-//   console.log(response);
-// };
+  console.log(response);
+};
 
-// const login = () => {
-//   console.log("Hola desde login padre");
-// };
+const login = () => {
+  console.log("Hola desde login padre");
+};
 
 let butomsConfig = [
   {
@@ -100,12 +100,12 @@ let butomsConfig = [
   },
 ];
 
-// onMounted(() => {
-//   getDataPost();
-//   //imprimirConsola();
-//   //postDataPost();
-//   //putDataPost()
-// });
+onMounted(() => {
+  getDataPost();
+  //imprimirConsola();
+  //postDataPost();
+  //putDataPost()
+});
 </script>
 
 <style scoped>
