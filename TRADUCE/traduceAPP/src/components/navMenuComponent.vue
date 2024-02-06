@@ -8,6 +8,9 @@
       <RouterLink class="nav-link" to="/about"
         ><span class="material-icons-round"> info </span></RouterLink
       >
+      <RouterLink class="nav-link" to="/translate"
+        ><span class="material-icons-round">translate</span></RouterLink
+      >
     </div>
   </nav>
 </template>

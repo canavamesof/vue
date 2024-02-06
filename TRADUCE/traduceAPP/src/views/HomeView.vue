@@ -59,7 +59,7 @@ const getDataPost = async () => {
 
   console.log("Se llamo al api");
   console.log(response);
-  console.log(response.data);
+  // console.log(response.data);
 };
 
 const postDataPost = async () => {
