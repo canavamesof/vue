@@ -17,54 +17,57 @@
             </select>
         </div>
         <div>
-            <textarea v-model="text" placeholder="escriba el texto que desea traducir"> </v-model></textarea>
+            <textarea v-model="text" placeholder="Traducir">
+            </v-model></textarea>
         </div>
         <div>
-            <textarea v-model="translatedText" placeholder="texto traducido"> </v-model></textarea>
+            <textarea v-model="translatedText" placeholder="Texto traducido">
+            </v-model></textarea>
         </div>
         <div>
-            <button @change = "detectarIdioma">
-                idioma detectado
-            </button>
-            <button @click="traducirIdiomas">
-                traducir
-            </button>
+            <button @change="detectarIdioma">idioma detectado</button>
         </div>
-
+        <div>
+            <button @click="traducirIdiomas">traducir</button>
+        </div>
     </div>
 </template>
 <script setup>
-import { onMounted, ref } from 'vue';
-import googleServices from '@/services/googleServices';
+import { onMounted, ref } from "vue";
+import googleServices from "@/services/googleServices";
 
-const source = ref("es")
-const target = ref("en")
-const languages = ref([])
-const text = ref("")
-const translatedText = ref("")
+const source = ref("es");
+const target = ref("en");
+const languages = ref([]);
+const text = ref("");
+const translatedText = ref("");
 
 const obtenerIdiomas = async () => {
     const response = await googleServices.obtenerIdiomas();
-    console.log(response)
+    console.log(response);
     languages.value = response.data.data.languages;
-}
+};
 
 const traducirIdiomas = async () => {
-    const response = await googleServices.traducirIdiomas(text.value, target.value, source.value);
+    const response = await googleServices.traducirIdiomas(
+        text.value,
+        target.value,
+        source.value
+    );
     let translation = response.data.data.translations;
 
     console.log(translation[0].translatedText);
 
     translatedText.value = translation[0].translatedText;
-}
+};
 const detectarIdioma = async (texto) => {
     const response = await googleServices.detectarIdioma(text.value);
     let detectarIdioma = response.data.data.translations;
     console.log(translation[0].detectarIdiomaText);
 
-    detectarIdioma.value = translation[0].detectarIdioma;   
-}
+    detectarIdioma.value = translation[0].detectarIdioma;
+};
 onMounted(() => {
-    //obtenerIdiomas ()
-})
+    //obtenerIdiomas();
+});
 </script>
