@@ -14,6 +14,13 @@ body{
 
 }
 
+.contenedor{
+  min-width: 650px;
+  max-width: 850px;
+  margin: 0 auto;
+  margin-top: 150px;
+  
+}
 
 .mainContainer {
     display: grid;
@@ -22,4 +29,20 @@ body{
     padding: 4rem;
     font-weight: normal;
     background-color: rgba(52, 52, 218, 0.555);
+    border-radius: 20px;
+    box-shadow: 10px 10px 50px 15px rgb(32, 48, 59);
+  }
+
+  textarea{
+    width: 250px;
+    height: 100px ;
+  }
+  button{
+    margin-top: 35px;
+    width: 170px;
+    height: 40px;
+  }
+  select{
+    width: 40px;
+    height: 25px;
   }
