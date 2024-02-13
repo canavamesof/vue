@@ -1,6 +1,6 @@
 <template>
-    <div class="languages">
-        <div>
+    <div class="mainContainer">
+        <div class="">
             <div>Languege source: {{ source }}</div>
             <select v-model="source">
                 <option v-for="mylanguages in languages">
@@ -9,7 +9,7 @@
             </select>
         </div>
         <div>
-            <div>Languege target: {{ target }}</div>
+            <div>Language target: {{ target }}</div>
             <select v-model="target">
                 <option v-for="mylanguages in languages">
                     {{ mylanguages.language }}
@@ -17,10 +17,12 @@
             </select>
         </div>
         <div>
-            <textarea v-model="text" placeholder="escriba el texto que desea traducir"> </v-model>
-        </textarea>
-            <textarea v-model="translatedText" placeholder="texto traducido"> </v-model>
-        </textarea>
+            <textarea v-model="text" placeholder="escriba el texto que desea traducir"> </v-model></textarea>
+        </div>
+        <div>
+            <textarea v-model="translatedText" placeholder="texto traducido"> </v-model></textarea>
+        </div>
+        <div>
             <button @change = "detectarIdioma">
                 idioma detectado
             </button>
