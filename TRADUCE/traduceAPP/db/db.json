@@ -1,16 +1,18 @@
-"users": [
-  {
-    "id": "1",
-    "name": "Carlos Luis",
-    "lastname": "Biolley Quesada",
-    "email": "cbiolley@correo.com",
-    "password": "12345"
-  },
-  {
-    "id": "2",
-    "name": "Carolina",
-    "lastname": "Navarro Mora",
-    "email": "cnavarro@correo.com",
-    "password": "12345"
-  }
-],
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Carlos",
+      "lastname": "Biolley",
+      "email": "cbiolley@correo.com",
+      "password": "12345"
+    },
+    {
+      "id": "2",
+      "name": "Carolina",
+      "lastname": "Navarro",
+      "email": "cnavarro@correo.com",
+      "password": "12345"
+    }
+  ]
+}

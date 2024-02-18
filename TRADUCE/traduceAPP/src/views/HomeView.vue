@@ -52,6 +52,18 @@
         </loginUsuario>
       </div>
     </div>
+    <div v-else class="row">
+      <div class="col-lg-12">
+        <div class="img-container">
+          <div class="d-flex">
+            <img src="../assets/logo app.png" alt="Logo Vue" height="350px" />
+          </div>
+          <div>
+            <h2 class="text-center">Bienvenid@ {{ nameCurrenUser }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
