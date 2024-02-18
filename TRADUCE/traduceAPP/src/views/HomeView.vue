@@ -58,7 +58,7 @@
           <div class="d-flex">
             <img src="../assets/logo app.png" alt="Logo Vue" height="350px" />
           </div>
-          <div>
+          <div class="">
             <h2 class="text-center">Bienvenid@ {{ nameCurrenUser }}</h2>
           </div>
         </div>
