@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="row">
+    <div v-if="!esLoginCurrenUser" class="row">
       <div class="col-lg-6">
         <div class="img-container">
           <div class="d-flex">
@@ -16,29 +16,39 @@
 
       <div class="col-lg-6">
         <loginUsuario class="loginUsuario" :butoms-config="butomsConfig">
-          <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Correo</label>
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Ingrese su correo"
-              />
+          <template #default>
+            <div v-if="isLoginFailed" class="alert alert-danger" role="alert">
+              Usuario o contraseña incorrecta
             </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"
-                >Contraseña</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Ingrese su contraseña"
-              />
-            </div>
-          </form>
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Correo</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Ingrese su correo"
+                  v-model="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Ingrese su contraseña"
+                  v-model="password"
+                  autocomplete="on"
+                />
+              </div>
+            </form>
+          </template>
         </loginUsuario>
       </div>
     </div>
@@ -47,52 +57,44 @@
 
 <script setup>
 import loginUsuario from "@/components/loginUsuario.vue";
-import { onMounted } from "vue";
-import postServices from "../services/postServices";
+import { onMounted, ref } from "vue";
+import userServices from "../services/userServices";
+import localStorage from "../services/localStorage";
+import keys from "../share/keys";
 
-const imprimirConsola = () => {
-  console.log("Hola mundo");
-};
+const email = ref("");
+const password = ref("");
+const esLoginCurrenUser = ref(false);
+const nameCurrenUser = ref("");
+const isLoginFailed = ref(false);
 
-const getDataPost = async () => {
-  const response = await postServices.getDataPost();
+const getLogin = async () => {
+  const response = await userServices.getLogin(email.value, password.value);
 
-  console.log("Se llamo al api");
-  console.log(response);
-  // console.log(response.data);
-};
+  if (response !== null && response != undefined) {
+    esLoginCurrenUser.value = response.esLogin;
+    nameCurrenUser.value = response.fullname;
 
-const postDataPost = async () => {
-  // let newpost = {
-  //   id: "3",
-  //   title: "He creado este registro utilizando axios, desde una vista de Vusjs",
-  // };
-  const response = await postServices.getDataPost();
+    localStorage.setItem(
+      keys.keysLocalStorage.esLogin,
+      esLoginCurrenUser.value
+    );
+    localStorage.setItem(
+      keys.keysLocalStorage.nameCurrenUser,
+      nameCurrenUser.value
+    );
 
-  console.log(response);
-};
-
-const putDataPost = async () => {
-  // let updatepost = {
-  //   id: "3",
-  //   title:
-  //     "He actualizado este registro utilizando axios, desde una vista de Vuejs",
-  // };
-
-  const response = await postServices.putDataPost();
-
-  console.log(response);
-};
-
-const login = () => {
-  console.log("Hola desde login padre");
+    location.href = "/";
+  }else{
+    isLoginFailed.value = true;
+  }
 };
 
 let butomsConfig = [
   {
     texto: "Iniciar Sesión",
-    clases: "btn btn-info mb-2",
-    metodo: login,
+    clases: "btn btn-primary mb-2",
+    metodo: getLogin,
   },
   {
     texto: "Olvido su contraseña?",
@@ -101,12 +103,23 @@ let butomsConfig = [
 ];
 
 onMounted(() => {
-  getDataPost();
-  //imprimirConsola();
-  //postDataPost();
-  //putDataPost()
+  let esLoginLocalStorage = localStorage.getItem(keys.keysLocalStorage.esLogin);
+  let nameCurrenUserLocalStore = localStorage.getItem(
+    keys.keysLocalStorage.nameCurrenUser
+  );
+
+  if (
+    nameCurrenUserLocalStore !== undefined &&
+    nameCurrenUserLocalStore !== null &&
+    nameCurrenUserLocalStore !== "" &&
+    esLoginLocalStorage === "true"
+  ) {
+    nameCurrenUser.value = nameCurrenUserLocalStore;
+    esLoginCurrenUser.value = true;
+  }
 });
 </script>
+
 
 <style scoped>
 img {

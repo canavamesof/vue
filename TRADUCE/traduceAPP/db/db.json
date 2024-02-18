@@ -1,25 +1,16 @@
-{
-  "posts": [
-    { "id": "1", 
-    "title": "Carolina" 
+"users": [
+  {
+    "id": "1",
+    "name": "Carlos Luis",
+    "lastname": "Biolley Quesada",
+    "email": "cbiolley@correo.com",
+    "password": "12345"
   },
-    { "id": "2", 
-    "title": "Carlos" 
-  },
-    { "id": "3", 
-    "title": "Maria" 
+  {
+    "id": "2",
+    "name": "Carolina",
+    "lastname": "Navarro Mora",
+    "email": "cnavarro@correo.com",
+    "password": "12345"
   }
-
-  ],
-  "comments": [
-    { "id": "1", 
-    "text": "a comment about post 1", 
-    "postId": "1" },
-    { "id": "2", 
-    "text": "another comment about post 1", 
-    "postId": "1" }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-}
+],
