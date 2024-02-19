@@ -1,9 +1,9 @@
 import axios from "axios";
 
 
-const detectarIdioma = async (texto) => {
+const detectLanguages = async (text) => {
     const encodedParams = new URLSearchParams();
-    encodedParams.set('q', texto);
+    encodedParams.set('q', text);
 
     const options = {
         method: 'POST',
@@ -23,7 +23,7 @@ const detectarIdioma = async (texto) => {
         console.error(error);
     }
 }
-const obtenerIdiomas = async () => {
+const getLanguages = async () => {
     const options = {
         method: 'GET',
         url: 'https://google-translate1.p.rapidapi.com/language/translate/v2/languages',
@@ -41,9 +41,9 @@ const obtenerIdiomas = async () => {
     }
 }
 
-const traducirIdiomas = async (texto, target, source) =>{
+const translate = async (text, target, source) =>{
 const encodedParams = new URLSearchParams();
-encodedParams.set('q', texto);
+encodedParams.set('q', text);
 encodedParams.set('target', target);
 encodedParams.set('source', source);
 
@@ -67,7 +67,7 @@ try {
 }
 
 export default {
-    detectarIdioma,
-    obtenerIdiomas,
-    traducirIdiomas
+    detectLanguages,
+    getLanguages,
+    translate,
 }
